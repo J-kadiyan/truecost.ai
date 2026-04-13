@@ -2,6 +2,32 @@ import React, { useState } from 'react'
 import Hero from './components/Hero'
 import InputFlow from './components/InputFlow'
 import Dashboard from './components/Dashboard'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+
+function ErrorFallback({ error }) {
+  return (
+    <div className="container" style={{ padding: 'var(--spacing-xl)', textAlign: 'center' }}>
+      <h2 style={{ color: 'var(--danger)' }}>Something went wrong.</h2>
+      <p style={{ color: 'var(--text-muted)' }}>{error.message}</p>
+      <button className="btn-natural" onClick={() => window.location.reload()}>Reload Platform</button>
+    </div>
+  );
+}
+
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+  render() {
+    if (this.state.hasError) return <ErrorFallback error={this.state.error} />;
+    return this.props.children;
+  }
+}
 
 function App() {
   const [view, setView] = useState('landing'); // landing, input, dashboard
@@ -12,28 +38,35 @@ function App() {
     setView('dashboard');
   };
 
+  const resetToLanding = () => {
+    setView('landing');
+    setAnalysisData(null);
+  };
+
   return (
-    <div className="min-h-screen">
-      {view === 'landing' && (
-        <Hero onStart={() => setView('input')} />
-      )}
+    <ErrorBoundary>
+      <div className="app-shell" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+        <Navbar onReset={resetToLanding} />
+        
+        <main style={{ flex: 1, padding: 'var(--spacing-lg) 0' }}>
+          {view === 'landing' && (
+            <Hero onStart={() => setView('input')} />
+          )}
 
-      {view === 'input' && (
-        <main style={{ padding: 'var(--spacing-xl) var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
-          <InputFlow onAnalyze={handleStartAnalysis} />
+          {view === 'input' && (
+            <div className="container">
+              <InputFlow onAnalyze={handleStartAnalysis} />
+            </div>
+          )}
+
+          {view === 'dashboard' && analysisData && (
+            <Dashboard data={analysisData} onBack={resetToLanding} />
+          )}
         </main>
-      )}
 
-      {view === 'dashboard' && analysisData && (
-        <main style={{ padding: 'var(--spacing-xl) var(--spacing-lg)', maxWidth: '1200px', margin: '0 auto' }}>
-          <Dashboard data={analysisData} onBack={() => setView('landing')} />
-        </main>
-      )}
-
-      <footer style={{ textAlign: 'center', padding: 'var(--spacing-xl)', color: 'var(--text-secondary)', opacity: 0.6 }}>
-        &copy; 2026 TrueCost AI — Radical Transparency for Education.
-      </footer>
-    </div>
+        <Footer />
+      </div>
+    </ErrorBoundary>
   )
 }
 

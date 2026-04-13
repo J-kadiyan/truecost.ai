@@ -2,17 +2,17 @@ import React from 'react';
 
 const Hero = ({ onStart }) => {
   return (
-    <div className="hero-container" style={{ 
+    <div className="hero-container container" style={{ 
       textAlign: 'center', 
-      padding: 'var(--spacing-xl) var(--spacing-md)',
+      padding: 'var(--spacing-xl) 1.5rem',
       maxWidth: '1000px',
       margin: '0 auto',
       animation: 'fadeIn 1.2s ease-out'
     }}>
       <header style={{ marginBottom: 'var(--spacing-lg)' }}>
         <p style={{ 
-          fontSize: '0.85rem', 
-          letterSpacing: '0.2em', 
+          fontSize: '0.75rem', 
+          letterSpacing: '0.15em', 
           textTransform: 'uppercase', 
           color: 'var(--accent-muted)',
           marginBottom: 'var(--spacing-md)'
@@ -21,15 +21,15 @@ const Hero = ({ onStart }) => {
         </p>
         
         <h1 style={{ 
-          fontSize: 'clamp(3rem, 8vw, 6rem)', 
-          lineHeight: '0.9',
+          fontSize: 'clamp(2.5rem, 10vw, 5.5rem)', 
+          lineHeight: '1.0',
           marginBottom: 'var(--spacing-md)'
         }}>
           Decision logic for the <span className="text-editorial">truth seekers.</span>
         </h1>
         
         <p style={{ 
-          fontSize: '1.25rem', 
+          fontSize: 'clamp(1.1rem, 2vw, 1.25rem)', 
           maxWidth: '600px', 
           margin: '0 auto',
           color: 'var(--text-muted)',
@@ -40,15 +40,21 @@ const Hero = ({ onStart }) => {
         </p>
       </header>
       
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: 'var(--spacing-xl)' }}>
-        <button className="btn-natural" onClick={onStart}>
+      <div className="hero-actions" style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        gap: '15px', 
+        marginBottom: 'var(--spacing-xl)',
+        flexWrap: 'wrap'
+      }}>
+        <button className="btn-natural" onClick={onStart} style={{ width: 'min(100%, 250px)' }}>
           Begin Analysis
         </button>
       </div>
 
       <div style={{ borderTop: '1px solid var(--border-light)', paddingTop: 'var(--spacing-md)' }}>
-        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
-          "The most honest thing a financial product has ever shown a student." — Pre-Seed Beta Review
+        <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontStyle: 'italic', maxWidth: '400px', margin: '0 auto' }}>
+          "The most honest thing a financial product has ever shown a student."
         </p>
       </div>
 

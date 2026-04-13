@@ -10,23 +10,34 @@
   --text-muted: #666666;
   --border-light: #e5e2df;
   
-  /* Indicators - Grounded, not neon */
+  /* Indicators */
   --safe: #4a5d4e;
   --warning: #c29545;
   --danger: #9e433a;
   
-  /* Shadows - Layered Natural Light */
-  --shadow-soft: 
-    0 1px 2px rgba(0,0,0,0.02),
-    0 4px 8px rgba(0,0,0,0.04),
-    0 12px 24px rgba(0,0,0,0.04);
-  
-  /* Spacing */
-  --spacing-md: 1.5rem;
-  --spacing-lg: 3rem;
-  --spacing-xl: 6rem;
+  /* Responsive Spacing & Scaling */
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
   
   --transition-organic: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --spacing-md: 1.5rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 6rem;
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
 body {
