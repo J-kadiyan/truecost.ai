@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Daylight Natural Palette - Editorial/Organic */
+  --bg-natural: #fcfbf9;
+  --bg-card: #ffffff;
+  --accent-earth: #5f6d5b; /* Sage */
+  --accent-muted: #b2a38a; /* Sand */
+  --text-main: #1a1a1a;
+  --text-muted: #666666;
+  --border-light: #e5e2df;
+  
+  /* Indicators - Grounded, not neon */
+  --safe: #4a5d4e;
+  --warning: #c29545;
+  --danger: #9e433a;
+  
+  /* Shadows - Layered Natural Light */
+  --shadow-soft: 
+    0 1px 2px rgba(0,0,0,0.02),
+    0 4px 8px rgba(0,0,0,0.04),
+    0 12px 24px rgba(0,0,0,0.04);
+  
+  /* Spacing */
+  --spacing-md: 1.5rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 6rem;
+  
+  --transition-organic: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--bg-natural);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+h1, h2, h3 {
+  font-family: 'Instrument Serif', serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.editorial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 4px; /* More human-made feel than soft round */
+  padding: var(--spacing-md);
+  box-shadow: var(--shadow-soft);
+  transition: var(--transition-organic);
+}
+
+.editorial-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 1px 2px rgba(0,0,0,0.02),
+    0 8px 16px rgba(0,0,0,0.06),
+    0 24px 48px rgba(0,0,0,0.06);
+}
+
+.btn-natural {
+  background: var(--text-main);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 2px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition-organic);
+}
+
+.btn-natural:hover {
+  background: var(--accent-earth);
+  transform: scale(1.02);
+}
+
+.text-editorial {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  color: var(--accent-earth);
+}
+
+/* Override standard classes from previous version if needed, but I'll update components */
+.glass-card { display: none; } /* Deprecated */
