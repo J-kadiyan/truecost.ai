@@ -33,41 +33,56 @@ const Register = ({ onRegisterSuccess, switchToLogin }) => {
   };
 
   return (
-    <div className="card" style={{ maxWidth: '400px', margin: '2rem auto', padding: '2rem' }}>
-      <h2 style={{ marginBottom: '1.5rem', fontFamily: 'Instrument Serif' }}>Register</h2>
-      {error && <div style={{ color: 'var(--danger)', marginBottom: '1rem' }}>{error}</div>}
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <input 
-          type="text" 
-          name="name" 
-          placeholder="Full Name" 
-          className="input-field" 
-          value={formData.name} 
-          onChange={handleChange} 
-          required 
-        />
-        <input 
-          type="email" 
-          name="email" 
-          placeholder="Email" 
-          className="input-field" 
-          value={formData.email} 
-          onChange={handleChange} 
-          required 
-        />
-        <input 
-          type="password" 
-          name="password" 
-          placeholder="Password" 
-          className="input-field" 
-          value={formData.password} 
-          onChange={handleChange} 
-          required 
-        />
-        <button type="submit" className="btn-natural" style={{ marginTop: '1rem' }}>Register</button>
-      </form>
-      <div style={{ marginTop: '1.5rem', textAlign: 'center', color: 'var(--text-muted)' }}>
-        Already have an account? <span onClick={switchToLogin} style={{ color: 'var(--text)', cursor: 'pointer', textDecoration: 'underline' }}>Login</span>
+    <div className="auth-wrapper">
+      <div className="auth-card">
+        <h2 style={{ marginBottom: '0.5rem', fontFamily: 'Instrument Serif', fontSize: '2.2rem', textAlign: 'center' }}>Create Account</h2>
+        <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '2rem', fontSize: '0.9rem' }}>Join TrueCost AI to save your truth audits.</p>
+        
+        {error && <div style={{ color: 'var(--danger)', marginBottom: '1.5rem', padding: '0.8rem', background: 'rgba(158, 67, 58, 0.1)', borderRadius: '4px', fontSize: '0.85rem', textAlign: 'center', borderLeft: '3px solid var(--danger)' }}>{error}</div>}
+        
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+          <div>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Full Name</label>
+            <input 
+              type="text" 
+              name="name" 
+              placeholder="John Doe" 
+              className="input-field" 
+              value={formData.name} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Email Address</label>
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="you@example.com" 
+              className="input-field" 
+              value={formData.email} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+          <div>
+            <label style={{ display: 'block', marginBottom: '6px', fontSize: '0.75rem', fontWeight: '600', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Password</label>
+            <input 
+              type="password" 
+              name="password" 
+              placeholder="Create a strong password" 
+              className="input-field" 
+              value={formData.password} 
+              onChange={handleChange} 
+              required 
+            />
+          </div>
+          <button type="submit" className="btn-natural" style={{ marginTop: '0.5rem', width: '100%', padding: '1rem', fontSize: '0.95rem' }}>Create Account</button>
+        </form>
+        
+        <div style={{ marginTop: '2rem', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+          Already have an account? <span onClick={switchToLogin} style={{ color: 'var(--text-main)', borderBottom: '1px solid var(--text-main)', cursor: 'pointer', fontWeight: '500', transition: 'all 0.2s ease', paddingBottom: '2px' }}>Log in here</span>
+        </div>
       </div>
     </div>
   );
