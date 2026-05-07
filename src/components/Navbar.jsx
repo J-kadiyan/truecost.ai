@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Navbar = ({ onReset }) => {
+const Navbar = ({ onReset, user, onLoginClick, onProfileClick, onCompareClick, theme, onToggleTheme }) => {
   return (
     <nav style={{ 
       borderBottom: '1px solid var(--border-light)', 
-      background: 'rgba(252, 251, 249, 0.8)',
+      background: theme === 'dark' ? 'rgba(19, 22, 20, 0.85)' : 'rgba(252, 251, 249, 0.8)',
       backdropFilter: 'blur(10px)',
       position: 'sticky',
       top: 0,
@@ -29,13 +29,60 @@ const Navbar = ({ onReset }) => {
           TrueCost <span className="text-editorial">AI</span>
         </div>
         
-        <button 
-          className="btn-natural" 
-          onClick={onReset}
-          style={{ padding: '0.6rem 1.2rem', fontSize: '0.8rem' }}
-        >
-          New Analysis
-        </button>
+        <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+          <button 
+            className="theme-toggle"
+            onClick={onToggleTheme}
+            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
+
+          <button 
+            onClick={onCompareClick}
+            style={{ 
+              padding: '0.5rem 0.9rem', 
+              fontSize: '0.78rem', 
+              background: 'transparent', 
+              border: '1px solid var(--border-light)', 
+              borderRadius: '2px', 
+              cursor: 'pointer', 
+              color: 'var(--text-muted)', 
+              fontFamily: 'Inter, sans-serif',
+              transition: 'var(--transition-organic)',
+            }}
+            onMouseEnter={e => { e.target.style.borderColor = 'var(--accent-earth)'; e.target.style.color = 'var(--accent-earth)'; }}
+            onMouseLeave={e => { e.target.style.borderColor = 'var(--border-light)'; e.target.style.color = 'var(--text-muted)'; }}
+          >
+            Compare
+          </button>
+
+          <button 
+            className="btn-natural" 
+            onClick={onReset}
+            style={{ padding: '0.5rem 1rem', fontSize: '0.78rem' }}
+          >
+            New Analysis
+          </button>
+          
+          {user ? (
+            <button 
+              className="btn-natural" 
+              onClick={onProfileClick}
+              style={{ padding: '0.5rem 1rem', fontSize: '0.78rem' }}
+            >
+              Profile
+            </button>
+          ) : (
+            <button 
+              className="btn-natural" 
+              onClick={onLoginClick}
+              style={{ padding: '0.5rem 1rem', fontSize: '0.78rem' }}
+            >
+              Login
+            </button>
+          )}
+        </div>
       </div>
 
       <style>{`

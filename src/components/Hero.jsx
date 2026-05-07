@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Hero = ({ onStart }) => {
+const Hero = ({ onStart, onCompare }) => {
   return (
     <div className="hero-container container" style={{ 
       textAlign: 'center', 
@@ -43,12 +43,32 @@ const Hero = ({ onStart }) => {
       <div className="hero-actions" style={{ 
         display: 'flex', 
         justifyContent: 'center', 
-        gap: '15px', 
+        gap: '12px', 
         marginBottom: 'var(--spacing-xl)',
         flexWrap: 'wrap'
       }}>
-        <button className="btn-natural" onClick={onStart} style={{ width: 'min(100%, 250px)' }}>
+        <button className="btn-natural" onClick={onStart} style={{ width: 'min(100%, 220px)' }}>
           Begin Analysis
+        </button>
+        <button 
+          onClick={onCompare}
+          style={{ 
+            width: 'min(100%, 220px)',
+            padding: '1rem 2rem',
+            background: 'transparent',
+            border: '1px solid var(--border-light)',
+            borderRadius: '2px',
+            cursor: 'pointer',
+            fontSize: '1rem',
+            fontFamily: 'Inter, sans-serif',
+            fontWeight: '500',
+            color: 'var(--text-muted)',
+            transition: 'var(--transition-organic)',
+          }}
+          onMouseEnter={e => { e.target.style.borderColor = 'var(--accent-earth)'; e.target.style.color = 'var(--accent-earth)'; }}
+          onMouseLeave={e => { e.target.style.borderColor = 'var(--border-light)'; e.target.style.color = 'var(--text-muted)'; }}
+        >
+          Compare Colleges
         </button>
       </div>
 
@@ -57,13 +77,6 @@ const Hero = ({ onStart }) => {
           "The most honest thing a financial product has ever shown a student."
         </p>
       </div>
-
-      <style>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
     </div>
   );
 };
