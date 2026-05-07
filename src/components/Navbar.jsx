@@ -11,13 +11,14 @@ const Navbar = ({ onReset, user, onLoginClick, onProfileClick, onCompareClick, t
       zIndex: 100,
       animation: 'slideDown 0.6s ease-out'
     }}>
-      <div className="container" style={{ 
+      <div className="container nav-container" style={{ 
         display: 'flex', 
         justifyContent: 'space-between', 
         alignItems: 'center', 
         height: '70px' 
       }}>
         <div 
+          className="nav-brand"
           onClick={onReset}
           style={{ 
             fontFamily: 'Instrument Serif', 
@@ -29,7 +30,7 @@ const Navbar = ({ onReset, user, onLoginClick, onProfileClick, onCompareClick, t
           TrueCost <span className="text-editorial">AI</span>
         </div>
         
-        <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
+        <div className="nav-actions" style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>
           <button 
             className="theme-toggle"
             onClick={onToggleTheme}
@@ -89,6 +90,28 @@ const Navbar = ({ onReset, user, onLoginClick, onProfileClick, onCompareClick, t
         @keyframes slideDown {
           from { transform: translateY(-100%); }
           to { transform: translateY(0); }
+        }
+        
+        @media (max-width: 480px) {
+          .nav-container {
+            height: 60px !important;
+            padding: 0 0.8rem !important;
+          }
+          .nav-brand {
+            font-size: 1.2rem !important;
+          }
+          .nav-actions {
+            gap: 0.4rem !important;
+          }
+          .nav-actions button {
+            padding: 0.4rem 0.6rem !important;
+            font-size: 0.7rem !important;
+          }
+          .nav-actions .theme-toggle {
+            width: 28px !important;
+            height: 28px !important;
+            font-size: 0.9rem !important;
+          }
         }
       `}</style>
     </nav>

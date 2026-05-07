@@ -263,3 +263,15 @@ input[type="range"]::-moz-range-thumb {
   border-color: var(--accent-earth);
   box-shadow: 0 0 0 3px rgba(143,169,138,0.15);
 }
+
+@media (max-width: 480px) {
+  .auth-wrapper {
+    padding: 1rem;
+  }
+  .auth-card {
+    padding: 2rem 1.25rem;
+  }
+  .auth-card h2 {
+    font-size: 1.8rem !important;
+  }
+}
