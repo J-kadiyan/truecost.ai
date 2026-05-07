@@ -18,6 +18,12 @@ const Login = ({ onLoginSuccess, switchToRegister }) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
+      
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error('Server returned an invalid response. Is the backend running?');
+      }
+      
       const data = await res.json();
       
       if (!res.ok) {

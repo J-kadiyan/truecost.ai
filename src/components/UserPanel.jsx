@@ -38,6 +38,12 @@ const UserPanel = ({ user, onLogout, setUser }) => {
         },
         body: JSON.stringify(formData)
       });
+      
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        throw new Error('Server returned an invalid response. Is the backend running?');
+      }
+      
       const data = await res.json();
       
       if (!res.ok) throw new Error(data.msg || 'Update failed');
